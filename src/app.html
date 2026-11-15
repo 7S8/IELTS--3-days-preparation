@@ -130,6 +130,14 @@ table{border-collapse:collapse;width:100%;font-size:14px}
 th,td{text-align:left;padding:8px 10px;border-top:1px solid var(--line);vertical-align:top}
 th{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
 .scroll{overflow-x:auto}
+.ai{white-space:pre-wrap;overflow-wrap:anywhere;background:var(--accent-soft);border-radius:10px;padding:14px;font-size:15px;line-height:1.6}
+.noai{font-size:13px;color:var(--muted)}
+textarea.short{min-height:120px}
+.chat{display:flex;flex-direction:column;gap:10px}
+.msg{white-space:pre-wrap;overflow-wrap:anywhere;border-radius:12px;padding:12px 14px;font-size:15px;line-height:1.6;max-width:92%}
+.msg.me{align-self:flex-end;background:var(--ink);color:var(--bg)}
+.msg.ai{align-self:flex-start;background:var(--accent-soft)}
+button:disabled{opacity:.5;cursor:not-allowed}
 @media (prefers-reduced-motion: reduce){.bar i{transition:none}}
 </style>
 
@@ -147,6 +155,7 @@ th{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--mute
   <a href="#speaking">Speaking</a>
   <a href="#words">Слова</a>
   <a href="#trainer">Тренажёр</a>
+  <a href="#tutor">Claude</a>
   <a href="#sources">Источники</a>
 </div></nav>
 
@@ -432,6 +441,16 @@ th{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--mute
       <button id="dnext">Следующий вопрос</button>
     </div>
     <p class="src" id="dhint"></p>
+    <label class="lbl" for="dans">Ваш ответ текстом — для проверки у Claude</label>
+    <textarea class="short" id="dans" spellcheck="false" placeholder="Продиктуйте ответ кнопкой «Диктовать» или напечатайте то, что сказали вслух."></textarea>
+    <div class="row">
+      <button id="dmic" hidden>Диктовать</button>
+      <button class="primary" id="dcheck">Оценить у Claude</button>
+      <button id="dclr">Очистить</button>
+    </div>
+    <p class="src" id="dmicNote" hidden></p>
+    <p class="noai" hidden>Проверка у Claude работает, когда страница открыта как артефакт на claude.ai.</p>
+    <div class="ai" id="dai" hidden></div>
   </div>
 </section>
 
@@ -466,7 +485,7 @@ th{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--mute
 <section class="view" id="v-trainer" hidden>
   <div class="stack">
     <h2>Тренажёр письма</h2>
-    <p class="lead">Выберите задание, запустите таймер и пишите как на экзамене. Черновик сохраняется в этом браузере. Образец откройте только после того, как закончите.</p>
+    <p class="lead">Выберите задание, запустите таймер и пишите как на экзамене. Черновик сохраняется в этом браузере. Когда закончите, отправьте текст на проверку Claude и сравните с образцом.</p>
   </div>
   <div class="card">
     <label class="lbl" for="tsel">Задание</label>
@@ -483,10 +502,34 @@ th{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--mute
     <textarea id="ttext" spellcheck="false" placeholder="Пишите здесь. Проверка орфографии выключена, как на экзамене."></textarea>
     <div class="row"><button id="tmodel">Показать образец</button><button id="tclear">Очистить черновик</button></div>
     <div class="model" id="tmodelBox" hidden></div>
+    <div class="row"><button class="primary" id="tcheck">Проверить у Claude</button><span class="src">оценка по критериям IELTS, три главные ошибки с исправлениями</span></div>
+    <p class="noai" hidden>Проверка у Claude работает, когда страница открыта как артефакт на claude.ai.</p>
+    <div class="ai" id="tai" hidden></div>
   </div>
   <div class="card">
     <div class="head"><h3>Печать на компьютерном IELTS</h3><span class="tag vb">VBoostLab</span></div>
     <p>Если сдаёте computer-based, скорость на английской раскладке напрямую экономит время в Writing. Автор канала советует тренировать слепую печать на stamina-online.com — помогает уже после пары тренировок. <span class="src">(<a href="https://t.me/vboostlab/10">пост 10</a>)</span></p>
+  </div>
+</section>
+
+<!-- ================= TUTOR ================= -->
+<section class="view" id="v-tutor" hidden>
+  <div class="stack">
+    <h2>Спросить Claude</h2>
+    <p class="lead">Репетитор прямо на странице: отвечает сам Claude через ваш аккаунт claude.ai, без API-ключей. Он знает схемы из этой программы и дату экзамена. Историю между открытиями страницы не хранит.</p>
+  </div>
+  <div class="card">
+    <div class="row" id="chips">
+      <button data-q="Дай по три идеи «за» и «против» для темы: shops should not be allowed to sell unhealthy food. Коротко, на английском, с переводом.">Идеи для эссе про вредную еду</button>
+      <button data-q="Устрой мне Speaking Part 3: задай один вопрос, дождись моего ответа, оцени его и задай следующий.">Провести Part 3</button>
+      <button data-q="Дай мне задание Task 2 типа agree/disagree, похожее на экзаменационное, и план из четырёх абзацев по схеме из программы.">Новая тема Task 2 с планом</button>
+      <button data-q="Проверь, как я использую respectively и Present Perfect Passive: дай 5 коротких упражнений на описание карт и разбери мои ответы.">Упражнения на карты</button>
+    </div>
+    <div class="chat" id="chat"></div>
+    <label class="lbl" for="cin">Ваш вопрос</label>
+    <textarea class="short" id="cin" placeholder="Например: объясни разницу между overview и conclusion в Task 1"></textarea>
+    <div class="row"><button class="primary" id="csend">Отправить</button><button id="cnew">Новый разговор</button></div>
+    <p class="noai" hidden>Claude отвечает, когда страница открыта как артефакт на claude.ai. В файле index.html из репозитория этот раздел не работает.</p>
   </div>
 </section>
 
@@ -513,7 +556,7 @@ var store={get:function(k,d){try{var v=localStorage.getItem("ielts3:"+k);return 
 function fmt(s){s=Math.max(0,s);return Math.floor(s/60)+":"+("0"+(s%60)).slice(-2)}
 
 /* ---------- tabs ---------- */
-var views=["plan","task1","task2","speaking","words","trainer","sources"];
+var views=["plan","task1","task2","speaking","words","trainer","tutor","sources"];
 function show(){
   var h=(location.hash||"").slice(1); if(views.indexOf(h)<0)h=store.get("tab","plan"); if(views.indexOf(h)<0)h="plan";
   views.forEach(function(v){$("v-"+v).hidden=v!==h});
@@ -535,10 +578,10 @@ window.addEventListener("hashchange",function(){show();window.scrollTo(0,0)});
 var PLAN=[
  {id:"d1",date:"2026-11-15",label:"Воскресенье, 15 ноября",title:"День 1. Task 1 и Speaking Part 1",items:[
   ["Разбор process diagram: прочитать, выписать от руки 4 шаблона","Writing Task 1 → «производство лапши»",30,"#task1"],
-  ["Написать «лапшу» самостоятельно за 20 минут, сравнить с ответом Виолетты","Тренажёр → Instant noodles",35,"#trainer"],
+  ["Написать «лапшу» самостоятельно за 20 минут, проверить у Claude и сравнить с ответом Виолетты","Тренажёр → Instant noodles",35,"#trainer"],
   ["Разбор карт: 3 времени, 4 категории изменений, respectively","Writing Task 1 → Grange Park",30,"#task1"],
   ["Написать Grange Park за 20 минут, сравнить с образцом на 155 слов","Тренажёр → Grange Park",35,"#trainer"],
-  ["Speaking Part 1: выучить образец и формулу, ответить вслух на 12 вопросов","Speaking → тренировка, Part 1. Записывать на диктофон",45,"#speaking"],
+  ["Speaking Part 1: выучить образец и формулу, ответить вслух на 12 вопросов","Speaking → тренировка, Part 1. Диктуйте ответы и отправляйте Claude на оценку",45,"#speaking"],
   ["Карточки: «Speaking Erdley» и «Карты»","Слова",15,"#words"],
   ["Один тест Listening из Cambridge IELTS на время","Виолетта сама решает Cambridge 21 (пост 19). Имена и номера — сначала в черновик",40,E+"19"],
   ["Если экзамен на компьютере: 10 минут слепой печати","stamina-online.com — совет VBoostLab",10,V+"10"]
@@ -546,7 +589,7 @@ var PLAN=[
  {id:"d2",date:"2026-11-16",label:"Понедельник, 16 ноября",title:"День 2. Task 2 и Speaking Part 2–3",items:[
   ["Эссе Band 8.0: прочитать дважды, выписать 9 выделенных фраз и схему абзацев","Writing Task 2",30,"#task2"],
   ["Написать это же эссе по памяти за 40 минут, сравнить с образцом","Тренажёр → Exams vs continuous assessment",50,"#trainer"],
-  ["Новое эссе по той же схеме: тема из прогнозов про вредную еду","Тренажёр → Unhealthy food. 40 минут, 250+ слов",50,"#trainer"],
+  ["Новое эссе по той же схеме: тема из прогнозов про вредную еду","Тренажёр → Unhealthy food. 40 минут, 250+ слов, затем проверка у Claude",50,"#trainer"],
   ["Разбор «эволюция лошади» + приём причина-следствие из Venus flytrap","Writing Task 1",30,"#task1"],
   ["Написать одно из двух за 20 минут","Тренажёр → Horse или Venus flytrap",30,"#trainer"],
   ["Speaking Part 2: три карточки — минута подготовки, две минуты речи","Speaking → тренировка, Part 2",30,"#speaking"],
@@ -624,6 +667,7 @@ var dT=Timer($("dt"),$("dstart"),function(){
 });
 function drill(){
   var q=Q[part][qi[part]%Q[part].length]; stage=0;
+  if($("dai")){$("dai").hidden=true;$("dans").value=""}
   ["p1","p2","p3"].forEach(function(p){$(p).setAttribute("aria-pressed",p===part?"true":"false")});
   if(part==="p2"){$("dq").textContent=q[0];$("dcue").textContent=q[1];$("dcue").hidden=false;dT.set(60);$("dhint").textContent="Минута на заметки, затем 2 минуты речи.";}
   else{$("dq").textContent=q;$("dcue").hidden=true;dT.set(part==="p1"?30:60);$("dhint").textContent=part==="p1"?"Цель — 20–30 секунд: прямой ответ, причина, что это вам даёт.":"Цель — 40–60 секунд: мнение, причина, пример, вывод.";}
@@ -693,6 +737,85 @@ $("tmodel").addEventListener("click",function(){
   if(b.hidden){b.innerHTML="";cur.model.forEach(function(p){b.appendChild(el("p",null,p))});b.appendChild(el("p",{"class":"src"},words(cur.model.join(" "))+" слов"));b.hidden=false;$("tmodel").textContent="Скрыть образец"}
   else{b.hidden=true;$("tmodel").textContent="Показать образец"}
 });
+
+/* ---------- Claude on the page ---------- */
+var METHOD="The candidate studies with this method. Writing Task 1: Introduction (paraphrase of the task only) -> Overview (starts with Overall, the big picture, no dates or small details) -> Body 1 -> Body 2; bodies are split by logic (stage of the transformation, or area of the map), never mechanically; Passive Voice for man-made processes; for maps: Past Simple for the old map, Present Perfect Passive for changes, Present Simple for today, never 'Body 1 = old map, Body 2 = new map', use 'respectively' with matching order; show cause and effect between stages. Writing Task 2 opinion essay: introduction = general fact + the view from the task in other words + a clear position with two reasons; Body 1 = first reason, explanation, example, result; Body 2 = second reason, a counter-argument and its rebuttal; one-sentence conclusion restating the position; clear simple vocabulary is preferred to rare words. Speaking Part 1: direct answer + reason + what it gives me, about three sentences; one natural idiom in the right context is better than five memorised ones.";
+var hasClaude=!!(window.claude&&window.claude.use);
+var sampleP=hasClaude?window.claude.use("sample"):Promise.resolve(null);
+var COPY={not_granted:"Вы не разрешили странице обращаться к Claude. Разрешение можно вернуть в меню Permissions этого артефакта.",rate_limited:"Слишком много запросов подряд. Подождите минуту и нажмите ещё раз.",prompt_too_large:"Текст слишком длинный для одной проверки. Сократите его.",session_expired:"Сессия истекла. Обновите страницу и повторите."};
+function askClaude(btn,out,build){
+  var label=btn.textContent;
+  btn.addEventListener("click",function(){
+    if(btn._ctl){btn._ctl.abort();return}
+    var req=build(); if(!req)return;
+    var o=req.out||out;
+    sampleP.then(function(sample){
+      if(!sample){o.hidden=false;o.textContent="Claude недоступен в этом окне. Откройте страницу как артефакт на claude.ai.";return}
+      var ctl=new AbortController();btn._ctl=ctl;btn.textContent="Остановить";o.hidden=false;o.textContent="Claude думает…";
+      sample(req.input,{signal:ctl.signal,cache:req.cache!==false,onText:function(e){o.textContent=e.text}})
+      .then(function(r){o.textContent=r.text+(r.truncated?"\n\n(ответ обрезан — попросите короче)":"");if(req.done)req.done(r.text)})
+      .catch(function(e){var keep=(e&&e.text)||"",code=e&&e.code;
+        if(code==="cancelled")o.textContent=keep||"Остановлено.";
+        else o.textContent=(keep?keep+"\n\n":"")+(COPY[code]||"Не получилось получить ответ. Нажмите ещё раз.")})
+      .then(function(){btn._ctl=null;btn.textContent=label});
+    });
+  });
+}
+sampleP.then(function(s){if(s)return;
+  [].forEach.call(document.querySelectorAll(".noai"),function(n){n.hidden=false});
+  ["tcheck","dcheck","csend"].forEach(function(id){$(id).disabled=true});
+});
+
+/* writing check */
+askClaude($("tcheck"),$("tai"),function(){
+  var text=$("ttext").value.trim(), n=words(text), out=$("tai");
+  if(n<40){out.hidden=false;out.textContent="Сначала напишите ответ — хотя бы 40 слов.";return null}
+  var ref="";
+  if(cur.t===1)ref=cur.model?"You cannot see the diagram. Treat this reference answer, written by the candidate's teacher, as the source of truth for what the diagram shows:\n"+cur.model.join("\n")+"\n":"You cannot see the diagram, so do not judge whether the described facts are accurate; judge task structure, overview, grouping, coherence and language.\n";
+  else if(cur.model)ref="For calibration, here is the teacher's Band 8.0 answer to the same task:\n"+cur.model.join("\n")+"\n";
+  return {input:"You are an experienced IELTS examiner and tutor. Assess this IELTS Academic Writing Task "+cur.t+" answer strictly by the public band descriptors. The exam is in a few days, so be direct and practical.\n\nTASK:\n"+cur.prompt+"\n\n"+ref+"\n"+METHOD+"\n\nCANDIDATE'S ANSWER ("+n+" words, minimum "+(cur.t===1?150:250)+"):\n"+text+"\n\nReply in Russian, as plain text with no markdown symbols, in at most 380 words, in exactly this order:\nОЦЕНКА: approximate bands for "+(cur.t===1?"Task Achievement":"Task Response")+", Coherence and Cohesion, Lexical Resource, Grammatical Range and Accuracy, and overall; one line each.\nТРИ ГЛАВНЫЕ ПРОБЛЕМЫ: for each, quote the candidate's sentence in English, explain the problem in Russian, give the corrected English sentence.\nЧТО УЖЕ ХОРОШО: one or two points.\nСЛЕДУЮЩАЯ ПОПЫТКА: one concrete thing to do differently.\nSay once that the bands are an estimate, not an official score."};
+});
+
+/* speaking check + dictation */
+askClaude($("dcheck"),$("dai"),function(){
+  var text=$("dans").value.trim(), out=$("dai");
+  if(words(text)<8){out.hidden=false;out.textContent="Сначала продиктуйте или напечатайте свой ответ.";return null}
+  var q=Q[part][qi[part]%Q[part].length], qt=part==="p2"?q[0]+"\n"+q[1]:q, pn=part.slice(1);
+  var len=part==="p1"?"50-70 words":part==="p2"?"200-230 words":"90-110 words";
+  return {input:"You are an experienced IELTS Speaking examiner and tutor. Assess this IELTS Speaking Part "+pn+" answer. It is a transcript of speech (dictated or typed), so ignore punctuation, capitalisation and spelling, and do not judge pronunciation.\n\nQUESTION:\n"+qt+"\n\n"+METHOD+"\n\nCANDIDATE'S ANSWER ("+words(text)+" words):\n"+text+"\n\nReply in Russian, as plain text with no markdown symbols, in at most "+(part==="p2"?"420":"260")+" words, in exactly this order:\nОЦЕНКА: approximate bands for Fluency and Coherence, Lexical Resource, Grammatical Range and Accuracy; one line each; say once it is an estimate and pronunciation was not assessed.\nЧТО ИСПРАВИТЬ: two or three points; quote the candidate's words in English and give the corrected English.\nВЕРСИЯ НА 7+: the same answer in natural spoken English, keeping the candidate's own ideas, "+len+", no forced idioms.\nВОПРОС ВДОГОНКУ: one follow-up question in English an examiner could ask next."};
+});
+$("dclr").addEventListener("click",function(){$("dans").value="";$("dai").hidden=true});
+(hasClaude?window.claude.use("dictation"):Promise.resolve(null)).then(function(d){
+  if(!d)return;
+  var mic=$("dmic"), note=$("dmicNote"), lang="en";
+  mic.hidden=false;
+  d.onFinal(function(e){var a=$("dans");a.value=(a.value?a.value.replace(/\s+$/,"")+" ":"")+e.text;note.hidden=true});
+  d.onPartial(function(e){note.hidden=false;note.textContent="… "+e.text});
+  d.onState(function(e){mic.textContent=e.state==="idle"?"Диктовать":e.state==="starting"?"Включаю микрофон…":e.state==="finishing"?"Заканчиваю…":"Остановить запись";mic.setAttribute("aria-pressed",e.state==="listening"?"true":"false");if(e.state==="idle"&&note.textContent.indexOf("…")===0)note.hidden=true});
+  mic.addEventListener("click",function(){
+    if(d.active()){d.stop().catch(function(){});return}
+    d.start(lang?{language:lang}:undefined).catch(function(e){
+      var c=e&&e.code;
+      if(c==="stopped"||c==="dismissed")return;
+      note.hidden=false;
+      if(c==="unavailable"&&lang){lang="";note.textContent="Диктовка на английском не включилась. Нажмите «Диктовать» ещё раз — попробую без указания языка.";}
+      else if(c==="not_granted"||c==="unavailable"){mic.hidden=true;note.textContent="Диктовка недоступна. Печатайте ответ вручную.";}
+      else note.textContent="Микрофон не ответил. Попробуйте ещё раз чуть позже.";
+    });
+  });
+});
+
+/* tutor chat */
+var turns=[], RULES="You are a friendly, concise IELTS tutor embedded in a 3-day study page. The learner's IELTS exam is on 18 November 2026; their priorities are Writing and Speaking. They speak Russian: explain in Russian, give all examples, model sentences and exam questions in English. Plain text only, no markdown symbols. Keep answers under 250 words unless asked for more. "+METHOD+" When you run a speaking or writing exercise, ask one question at a time, wait for the learner's answer, then give approximate bands, two or three concrete corrections and a better version.";
+function addMsg(cls,text){var m=el("div",{"class":"msg "+cls});m.textContent=text;$("chat").appendChild(m);return m}
+askClaude($("csend"),null,function(){
+  var q=$("cin").value.trim(); if(!q)return null;
+  $("cin").value="";addMsg("me",q);turns.push({role:"user",content:q});
+  var recent=turns.slice(-12); while(recent.length&&recent[0].role!=="user")recent.shift();
+  return {input:[{role:"user",content:RULES}].concat(recent),cache:false,out:addMsg("ai",""),done:function(t){turns.push({role:"assistant",content:t})}};
+});
+$("cnew").addEventListener("click",function(){turns=[];$("chat").innerHTML=""});
+[].forEach.call($("chips").children,function(b){b.addEventListener("click",function(){$("cin").value=b.dataset.q;$("cin").focus()})});
 
 /* ---------- sources ---------- */
 var OK='<span class="tag ok">вошло</span>', NO='<span class="tag me">только в Telegram</span>', SK='<span class="tag vb">не учебное</span>';
