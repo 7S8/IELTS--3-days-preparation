@@ -63,6 +63,7 @@ section.view{display:flex;flex-direction:column;gap:20px}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:12px;min-width:0}
 .src{font-size:13px;color:var(--muted)}
 .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+.tag.ia{background:var(--ok-soft);color:var(--ok)}
 .tag.vb{background:var(--sunk);color:var(--muted)}
 .tag.me{background:var(--warn-soft);color:var(--warn)}
 .tag.ok{background:var(--ok-soft);color:var(--ok)}
@@ -144,7 +145,7 @@ button:disabled{opacity:.5;cursor:not-allowed}
 <header class="top"><div class="wrap">
   <div class="eyebrow">Экзамен 18 ноября 2026 · упор на Writing и Speaking</div>
   <h1>IELTS за 3 дня</h1>
-  <p class="lead">Программа собрана из материалов каналов <a href="https://t.me/erdleyielts">Violetta Erdley | IELTS</a> (основа) и <a href="https://t.me/vboostlab">VBoostLab</a> (дополнение). У каждого блока указан пост-источник.</p>
+  <p class="lead">Программа собрана из материалов каналов <a href="https://t.me/erdleyielts">Violetta Erdley | IELTS</a> (основа) и <a href="https://t.me/vboostlab">VBoostLab</a> (дополнение). Шаблоны для типов заданий, которых в каналах нет, взяты у <a href="https://www.ieltsadvantage.com/">IELTS Advantage</a>. У каждого блока указан источник.</p>
   <div class="count"><b id="cd">—</b><span id="cdNote"></span></div>
 </div></header>
 
@@ -183,10 +184,51 @@ button:disabled{opacity:.5;cursor:not-allowed}
 <section class="view" id="v-task1" hidden>
   <div class="stack">
     <h2>Writing Task 1</h2>
-    <p class="lead">Три полных разбора Виолетты Эрдли: процесс, естественное развитие и карты. У всех одна схема — <b>Introduction → Overview → Body 1 → Body 2</b>. Выучите шаблоны, потом пишите сами в <a href="#trainer">тренажёре</a>.</p>
+    <p class="lead">Шаблоны для всех типов задания. Процессы и карты — по разборам Виолетты Эрдли; графики, которых в каналах нет, — по структуре IELTS Advantage. Выучите шаблоны, потом пишите сами в <a href="#trainer">тренажёре</a>.</p>
   </div>
 
-  <details class="guide" open>
+  <div class="card">
+    <div class="head"><h3>Все типы Task 1</h3><span class="src">какой шаблон брать</span></div>
+    <div class="scroll"><table>
+      <tr><th>Что на картинке</th><th>Шаблон</th><th>Источник</th></tr>
+      <tr><td>Line graph — изменения во времени</td><td>Графики, вариант «с датами»</td><td>IELTS Advantage</td></tr>
+      <tr><td>Bar chart</td><td>Графики: с датами или без дат — смотрите на оси</td><td>IELTS Advantage</td></tr>
+      <tr><td>Pie chart</td><td>Графики + язык долей</td><td>IELTS Advantage</td></tr>
+      <tr><td>Table</td><td>Графики: ищите максимум и минимум в строках и столбцах</td><td>IELTS Advantage</td></tr>
+      <tr><td>Два разных графика</td><td>«Два графика сразу»</td><td>IELTS Advantage</td></tr>
+      <tr><td>Process, сделанный людьми</td><td>«Производство лапши»</td><td>Erdley</td></tr>
+      <tr><td>Естественный процесс или развитие</td><td>«Эволюция лошади», «Venus flytrap»</td><td>Erdley, VBoostLab</td></tr>
+      <tr><td>Карты и планы</td><td>«Grange Park»</td><td>Erdley</td></tr>
+    </table></div>
+    <p>Скелет везде один: <b>Introduction (1 предложение) → Overview (2–3) → Body 1 → Body 2</b>. Заключения нет, мнения нет, 150+ слов.</p>
+  </div>
+
+<details class="guide">
+<summary><span><span class="tag ia">IELTS Advantage</span> <h3 style="display:inline">Графики: line, bar, pie, table</h3></span></summary>
+<div class="in">
+<p class="src">Структура — <a href="https://www.ieltsadvantage.com/2015/03/09/ielts-writing-task-1-charts-lesson/">Charts Lesson</a> и <a href="https://www.ieltsadvantage.com/2015/07/11/ielts-academic-writing-task-1/">Task 1 in 5 Easy Steps</a>. Фразы для заполнения собраны мной из их образцов и <a href="https://www.ieltsadvantage.com/2015/03/10/ielts-writing-task-1-grammar-guide/">Grammar Guide</a>. В каналах Эрдли и VBoostLab текстового разбора графиков нет.</p>
+<div class="step"><h4>Сначала один вопрос: есть ли даты?</h4><p><b>Dynamic</b> — данные за несколько моментов времени: описываем тренды, времена по датам (прошлое — Past Simple, прогноз — will / is projected to). <b>Static</b> — один момент: сравниваем категории, трендов нет. Если дат нет совсем — Present Simple.</p></div>
+<div class="step"><h4>1. Introduction — одно предложение, перефраз задания</h4><div class="tpl">The <i>[line graph / bar chart / pie charts / table]</i> <i>[shows / illustrates / compares]</i> <i>[what is measured]</i> in <i>[place]</i> <i>[between YEAR and YEAR / in YEAR]</i>.</div><p class="ex">The line graph shows energy consumption by fuel type in the United States from 1980-2008, with projected use until 2030.</p></div>
+<div class="step"><h4>2. Overview — 2–3 предложения, без цифр</h4><p>Самый важный абзац. Выберите 2–3 самые очевидные вещи: общий рост или падение, самое большое и самое маленькое, главное различие, заметное исключение. Даты можно, цифры нельзя.</p><span class="lbl">С датами</span><div class="tpl">Overall, <i>[A]</i> <i>[rose / fell]</i> over the period, while <i>[B]</i> <i>[did the opposite / remained relatively stable]</i>. <i>[C]</i> was the <i>[highest / most popular]</i> throughout.</div><span class="lbl">Без дат</span><div class="tpl">Overall, <i>[A]</i> was the <i>[largest / most common]</i> <i>[category]</i>, whereas <i>[B]</i> was the <i>[smallest]</i>. It is also clear that <i>[general comparison]</i>.</div><p class="ex">Overall, there was a general decrease in the percentage of people who donated money over the two time periods. However, the pattern differs between the three age groups before 50 and the two age groups after the age of 50.</p></div>
+<div class="step"><h4>3. Body 1 — детали первой главной черты, с цифрами</h4><div class="tpl">In <i>[first year]</i>, <i>[A]</i> stood at <i>[number]</i>. It then <i>[rose sharply]</i> to <i>[number]</i> in <i>[year]</i>, before <i>[falling]</i> to <i>[number]</i> by <i>[last year]</i>.</div><span class="lbl">Без дат</span><div class="tpl"><i>[A]</i> had the highest <i>[figure]</i> at <i>[number]</i>, followed by <i>[B]</i> with <i>[number]</i>. <i>[C]</i> and <i>[D]</i> were considerably lower, at <i>[number]</i> and <i>[number]</i> respectively.</div></div>
+<div class="step"><h4>4. Body 2 — детали второй главной черты, сравнение или исключение</h4><div class="tpl">By contrast, <i>[B]</i> started at <i>[number]</i> and <i>[declined steadily]</i>, reaching <i>[number]</i> in <i>[year]</i>. <i>[C]</i>, meanwhile, remained relatively stable at around <i>[number]</i>.</div><p class="ex">The exception to this general trend downwards was among the 51-65-year-olds and over 65s.</p><p>Итого 4 абзаца и 8–12 предложений. Проверка: незнакомый человек по вашему тексту должен суметь нарисовать график.</p></div>
+<div class="step"><h4>Pie chart: язык долей</h4><div class="pair"><b>[A] accounted for / made up / represented …</b><span>A составляет …</span><b>just over a half · nearly a third · roughly one quarter</b><span>51% · 32% · 26%</span><b>nearly three quarters · almost a quarter</b><span>73% · 24%</span><b>a significant majority · a large proportion</b><span>71% · 70%</span><b>a small minority · a tiny fraction</b><span>15% · 3%</span></div></div>
+<div class="step"><h4>Тренды: две конструкции</h4><div class="tpl">There was a <i>[gradual / sharp / slight / steady / dramatic / significant]</i> <i>[rise / increase / growth / fall / drop / decline / fluctuation]</i> in <i>[noun phrase]</i>.</div><div class="tpl"><i>[Noun phrase]</i> <i>[rose / increased / grew / climbed / fell / dropped / declined / plummeted]</i> <i>[gradually / sharply / slightly / steadily / dramatically / significantly]</i>.</div><p class="ex">There was a gradual rise in the price of oil. → The price of oil rose gradually.</p></div>
+<div class="step"><h4>Сравнения</h4><div class="pair"><b>more / fewer / less + noun + than</b><span>More people preferred public transport to taxis.</span><b>higher / lower … than</b><span>A higher number of people preferred public transport.</span><b>more / less + adjective + than</b><span>Taxis were more popular than public transport.</span><b>the highest / the lowest</b><span>The highest % of commuters preferred taxis.</span><b>the most / the least + adjective</b><span>The least popular mode of transport was buses.</span><b>halved · doubled</b><span>The price of oil halved in less than a year.</span></div><p>Не пишите <i>to conclude</i> и не делайте выводов — это только для эссе.</p></div>
+</div>
+</details>
+<details class="guide">
+<summary><span><span class="tag ia">IELTS Advantage</span> <h3 style="display:inline">Два графика сразу</h3></span></summary>
+<div class="in">
+<p class="src">Источник: <a href="https://www.ieltsadvantage.com/2015/05/12/ielts-task-1-multiple-graphs/">IELTS Task 1 Multiple Graphs</a>.</p>
+<div class="step"><h4>Правило</h4><p>Из каждого графика берём по две самые заметные черты и пишем только о них. Один график — один абзац; данные разных графиков в одном абзаце не смешиваем. Сравнение между графиками — только если оно очевидно.</p></div>
+<div class="step"><h4>Introduction — оба предложения задания в одном через while</h4><div class="tpl">The <i>[chart 1]</i> shows <i>[what]</i>, while the <i>[chart 2]</i> illustrates <i>[what]</i> <i>[in / during TIME]</i>.</div><p class="ex">The pie graph displays the principal causes why farming land deteriorates while the table illustrates how three regions of the planet were affected by these factors in the 1990s.</p></div>
+<div class="step"><h4>Overview — по предложению на каждый график</h4><div class="tpl">We can clearly see from the <i>[chart 1]</i> that <i>[two main features]</i>. The <i>[chart 2]</i> shows that <i>[two main features]</i>.</div></div>
+<div class="step"><h4>Body 1 — только первый график</h4><div class="tpl">The <i>[chart 1]</i> represents <i>[number]</i> <i>[categories]</i>, with <i>[A]</i> representing the biggest proportion at <i>[just over a third]</i>. <i>[B]</i> and <i>[C]</i> constitute <i>[nearly one third]</i> and <i>[just over a quarter]</i> respectively.</div></div>
+<div class="step"><h4>Body 2 — только второй график (+ сравнение, если есть)</h4><div class="tpl">The <i>[chart 2]</i> shows that <i>[detail of feature 1]</i>. <i>[Detail of feature 2]</i>, and <i>[C]</i> was marginally higher with a value of <i>[number]</i>.</div></div>
+</div>
+</details>
+  <details class="guide">
     <summary><span><span class="tag">Erdley</span> <h3 style="display:inline">Process diagram: производство лапши</h3></span></summary>
     <div class="in">
       <p class="src">Источник: <a href="https://t.me/erdleyielts/34">пост 34</a> (там же схема задания). Задание: «The diagram below shows how instant noodles are manufactured».</p>
@@ -331,7 +373,7 @@ button:disabled{opacity:.5;cursor:not-allowed}
 <section class="view" id="v-task2" hidden>
   <div class="stack">
     <h2>Writing Task 2</h2>
-    <p class="lead">Образец Виолетты Эрдли на Band 8.0. Сильные фразы уровня 7+ выделены маркером так же, как в её посте. Обратите внимание: в эссе нет сложной лексики — балл дают ясная позиция и логика.</p>
+    <p class="lead">Сначала образец Виолетты Эрдли на Band 8.0 с выделенными фразами, затем шаблоны для всех шести типов эссе по структуре IELTS Advantage.</p>
   </div>
 
   <div class="card">
@@ -362,6 +404,100 @@ button:disabled{opacity:.5;cursor:not-allowed}
       <li>Объём образца — около 265 слов. Минимум на экзамене — 250.</li>
     </ul>
   </div>
+
+  <div class="card">
+    <div class="head"><h3>Все типы Task 2</h3><span class="src">по словам в вопросе</span></div>
+    <div class="scroll"><table>
+      <tr><th>В вопросе написано</th><th>Тип</th><th>Мнение нужно?</th></tr>
+      <tr><td>Do you agree or disagree? · To what extent…?</td><td>1. Opinion</td><td>да, во введении</td></tr>
+      <tr><td>Discuss both views and give your opinion</td><td>2. Discussion</td><td>да</td></tr>
+      <tr><td>Discuss the advantages and disadvantages</td><td>3. Advantages / disadvantages</td><td>нет</td></tr>
+      <tr><td>Do the advantages outweigh the disadvantages?</td><td>4. Outweigh</td><td>да</td></tr>
+      <tr><td>Problems / causes … solutions</td><td>5. Problem – solution</td><td>нет, если не спросили</td></tr>
+      <tr><td>Два отдельных вопроса</td><td>6. Two-part</td><td>только если спрашивают</td></tr>
+    </table></div>
+    <p>У всех типов четыре абзаца: <b>Introduction → Body 1 → Body 2 → Conclusion</b>, 250+ слов, 40 минут. Меняется только то, что стоит внутри абзацев.</p>
+    <div class="note"><b>Шаблон — это каркас, а не текст.</b> Заученные куски экзаменаторы узнают и не засчитывают. Учите наизусть порядок предложений и связки, а содержание в скобках каждый раз пишите своё. IELTS Advantage сам предупреждает: ни одна структура не гарантирует высокий балл — его дают идеи, грамматика и словарь.</div>
+  </div>
+
+<details class="guide">
+<summary><span><span class="tag ia">IELTS Advantage</span> <h3 style="display:inline">1. Opinion — agree or disagree</h3></span></summary>
+<div class="in">
+<p class="src">Структура — <a href="https://www.ieltsadvantage.com/2015/03/03/ielts-writing-task-2-essay-structures/">Essay Structures</a>, <a href="https://www.ieltsadvantage.com/2015/03/02/ielts-writing-task-2-agree-disagree-lesson/">урок</a>. Шаблон для заполнения собран мной из опорных фраз их образцов.</p>
+<div class="step"><h4>Как узнать</h4><p>Do you agree or disagree? · To what extent do you agree or disagree? · What is your opinion? Сюда же: Is this a positive or negative development?</p></div>
+<div class="step"><h4>Структура по предложениям</h4><div class="pair"><b>Introduction</b><span>перефраз вопроса → мнение + две главные идеи</span><b>Body 1</b><span>topic sentence → объяснение → пример</span><b>Body 2</b><span>topic sentence → объяснение → пример</span><b>Conclusion</b><span>итог: главные идеи и мнение</span></div></div>
+<div class="step"><h4>Introduction</h4><div class="tpl">It is argued that <i>[paraphrase of the statement]</i>. This essay <i>[agrees / disagrees]</i> with this <i>[completely]</i> because <i>[reason 1]</i> and <i>[reason 2]</i>.</div></div>
+<div class="step"><h4>Body 1</h4><div class="tpl"><i>[Topic sentence: reason 1]</i>. <i>[Explain: this means that … / as a result, …]</i>. For example, <i>[specific example]</i>.</div></div>
+<div class="step"><h4>Body 2</h4><div class="tpl"><i>[Topic sentence: reason 2]</i> also <i>[ … ]</i>. <i>[Explain]</i>. For instance, <i>[specific example]</i>.</div></div>
+<div class="step"><h4>Conclusion</h4><div class="tpl">In conclusion, <i>[restate your position]</i> because <i>[reason 1 in other words]</i>, and <i>[reason 2 in other words]</i>.</div></div>
+<div class="step"><h4>Важно</h4><p>Позиция одна и та же в каждом абзаце. Эссе Виолетты выше — тот же тип с добавленным контраргументом; на экзамене выберите один вариант и не смешивайте. «I completely agree» и «This essay agrees» оба допустимы.</p></div>
+</div>
+</details>
+<details class="guide">
+<summary><span><span class="tag ia">IELTS Advantage</span> <h3 style="display:inline">2. Discussion — discuss both views</h3></span></summary>
+<div class="in">
+<p class="src">Структура — <a href="https://www.ieltsadvantage.com/2015/03/03/ielts-writing-task-2-essay-structures/">Essay Structures</a>, <a href="https://www.ieltsadvantage.com/2015/03/18/writing-task-2-discussion-essay-lesson/">урок</a>. Шаблон для заполнения собран мной из опорных фраз их образцов.</p>
+<div class="step"><h4>Как узнать</h4><p>Discuss both views and give your own opinion. · Discuss both sides of this argument.</p></div>
+<div class="step"><h4>Структура по предложениям</h4><div class="pair"><b>Introduction</b><span>перефраз с обеими точками зрения → thesis: какая сторона ваша</span><b>Body 1</b><span>первая точка зрения → обсуждение → почему согласны или нет → пример</span><b>Body 2</b><span>вторая точка зрения → обсуждение → почему согласны или нет → пример</span><b>Conclusion</b><span>краткий итог → какая сторона сильнее</span></div></div>
+<div class="step"><h4>Introduction</h4><div class="tpl">Some argue that <i>[view A]</i>, while others believe that <i>[view B]</i>. This essay agrees that <i>[your side]</i>.</div></div>
+<div class="step"><h4>Body 1</h4><div class="tpl">On the one hand, <i>[view A]</i>. <i>[Why people think so]</i>. It is therefore agreed that <i>[ … ]</i> / However, this essay disagrees with this because <i>[ … ]</i>. <i>[Example]</i> is a prime example.</div></div>
+<div class="step"><h4>Body 2</h4><div class="tpl">However, many disagree and feel that <i>[view B]</i>. <i>[Why people think so]</i>. Despite this, <i>[your reason to agree or disagree]</i>. For instance, <i>[example]</i>.</div></div>
+<div class="step"><h4>Conclusion</h4><div class="tpl">In conclusion, while <i>[view you reject, fairly stated]</i>, <i>[view you support]</i>. <i>[One sentence: why it is more important]</i>.</div></div>
+<div class="step"><h4>Важно</h4><p>Мнение просят почти всегда — оно должно быть во введении и в заключении. Даже если вам близки обе стороны, выберите одну: так ответ яснее.</p></div>
+</div>
+</details>
+<details class="guide">
+<summary><span><span class="tag ia">IELTS Advantage</span> <h3 style="display:inline">3. Advantages and disadvantages</h3></span></summary>
+<div class="in">
+<p class="src">Структура — <a href="https://www.ieltsadvantage.com/2015/03/03/ielts-writing-task-2-essay-structures/">Essay Structures</a>, <a href="https://www.ieltsadvantage.com/2015/05/24/ielts-advantages-and-disadvantages-lesson/">урок</a>. Шаблон для заполнения собран мной из опорных фраз их образцов.</p>
+<div class="step"><h4>Как узнать</h4><p>Discuss the advantages and disadvantages. · What are the advantages and disadvantages?</p></div>
+<div class="step"><h4>Структура по предложениям</h4><div class="pair"><b>Introduction</b><span>перефраз → outline: главные плюсы и минусы</span><b>Body 1</b><span>два преимущества → раскрыть первое → раскрыть второе → пример</span><b>Body 2</b><span>два недостатка → раскрыть первый → раскрыть второй → пример</span><b>Conclusion</b><span>итог главных пунктов</span></div></div>
+<div class="step"><h4>Introduction</h4><div class="tpl">It is argued that <i>[paraphrase]</i>. <i>[A1]</i> and <i>[A2]</i> are the main advantages, whereas <i>[D1]</i> and <i>[D2]</i> are the main disadvantages.</div></div>
+<div class="step"><h4>Body 1</h4><div class="tpl">The main advantages of <i>[topic]</i> are <i>[A1]</i> and <i>[A2]</i>. <i>[Explain A1]</i>. Furthermore, <i>[explain A2]</i>. A prime example of this is <i>[example]</i>.</div></div>
+<div class="step"><h4>Body 2</h4><div class="tpl">The main disadvantages associated with <i>[topic]</i> are <i>[D1]</i> and <i>[D2]</i>. <i>[Explain D1]</i>. As well as this, <i>[explain D2]</i>. For instance, <i>[example]</i>.</div></div>
+<div class="step"><h4>Conclusion</h4><div class="tpl">In conclusion, the benefits of <i>[topic]</i>, such as <i>[A1]</i> and <i>[A2]</i>, must be weighed against the drawbacks, such as <i>[D1]</i> and <i>[D2]</i>.</div></div>
+<div class="step"><h4>Важно</h4><p>Мнение здесь не спрашивают — не пишите, какая сторона лучше.</p></div>
+</div>
+</details>
+<details class="guide">
+<summary><span><span class="tag ia">IELTS Advantage</span> <h3 style="display:inline">4. Do the advantages outweigh the disadvantages?</h3></span></summary>
+<div class="in">
+<p class="src">Структура — <a href="https://www.ieltsadvantage.com/2015/03/03/ielts-writing-task-2-essay-structures/">Essay Structures</a>, <a href="https://www.ieltsadvantage.com/2015/05/24/ielts-advantages-and-disadvantages-lesson/">урок</a>. Шаблон для заполнения собран мной из опорных фраз их образцов.</p>
+<div class="step"><h4>Как узнать</h4><p>Do the advantages of this outweigh the disadvantages? · Do the benefits outweigh the drawbacks?</p></div>
+<div class="step"><h4>Структура по предложениям</h4><div class="pair"><b>Introduction</b><span>перефраз → thesis: что перевешивает → outline</span><b>Body 1 — сильная сторона</b><span>довод 1 → почему он сильный → пример; довод 2 → почему сильный → пример</span><b>Body 2 — слабая сторона</b><span>довод → почему он не такой весомый → пример</span><b>Conclusion</b><span>итог и позиция ещё раз</span></div></div>
+<div class="step"><h4>Introduction</h4><div class="tpl"><i>[Paraphrase of the statement]</i>. This essay will argue that the advantages of this outweigh the drawbacks. The essay will first demonstrate that <i>[A1]</i> and <i>[A2]</i>, followed by an analysis of how the primary disadvantage, namely <i>[D]</i>, is not valid.</div></div>
+<div class="step"><h4>Body 1</h4><div class="tpl">The main reason to <i>[do X]</i> is that <i>[A1]</i>. That is to say that <i>[explain]</i>. For example, <i>[example]</i>. In addition, <i>[A2]</i>. <i>[Explain]</i>. For instance, <i>[example]</i>.</div></div>
+<div class="step"><h4>Body 2</h4><div class="tpl">Those who oppose this say that <i>[D]</i>. However, <i>[why this is not a strong argument]</i>. For example, <i>[example]</i>.</div></div>
+<div class="step"><h4>Conclusion</h4><div class="tpl">In conclusion, <i>[A1]</i> and <i>[A2]</i> mean that the advantages of <i>[topic]</i> far outweigh the disadvantage of <i>[D]</i>.</div></div>
+<div class="step"><h4>Важно</h4><p>Вопрос не о количестве плюсов и минусов, а об их весе. Сторона, которую вы выбрали, получает большой абзац, вторая — короткий, с объяснением, почему она слабее.</p></div>
+</div>
+</details>
+<details class="guide">
+<summary><span><span class="tag ia">IELTS Advantage</span> <h3 style="display:inline">5. Problem and solution · cause and solution</h3></span></summary>
+<div class="in">
+<p class="src">Структура — <a href="https://www.ieltsadvantage.com/2015/03/03/ielts-writing-task-2-essay-structures/">Essay Structures</a>, <a href="https://www.ieltsadvantage.com/2015/05/08/ielts-problem-and-solution/">урок</a>. Шаблон для заполнения собран мной из опорных фраз их образцов.</p>
+<div class="step"><h4>Как узнать</h4><p>What problems does this cause and what are the possible solutions? · What are the causes of this and how can it be solved?</p></div>
+<div class="step"><h4>Структура по предложениям</h4><div class="pair"><b>Introduction</b><span>перефраз → outline: проблемы и решения</span><b>Body 1</b><span>назвать проблемы → объяснить первую → объяснить вторую → пример</span><b>Body 2</b><span>назвать решения → объяснить первое → объяснить второе → пример</span><b>Conclusion</b><span>итог</span></div></div>
+<div class="step"><h4>Introduction</h4><div class="tpl"><i>[Paraphrase of the situation]</i>. This essay will first suggest that the biggest problems caused by this are <i>[P1]</i> and <i>[P2]</i> and then argue that <i>[S1]</i> and <i>[S2]</i> are the most viable solutions.</div></div>
+<div class="step"><h4>Body 1</h4><div class="tpl">The principal problems with <i>[topic]</i> are <i>[P1]</i> and <i>[P2]</i>. <i>[Explain P1]</i>. As well as this, <i>[explain P2]</i>. For example, <i>[example]</i>.</div></div>
+<div class="step"><h4>Body 2</h4><div class="tpl">Solutions to these problems are <i>[S1]</i> and <i>[S2]</i>. If <i>[S1 happens]</i>, this will <i>[result]</i>. Also, <i>[S2 and its result]</i>. For instance, <i>[example]</i>.</div></div>
+<div class="step"><h4>Conclusion</h4><div class="tpl">In conclusion, the main problems with <i>[topic]</i> are <i>[P1]</i> and <i>[P2]</i>. These can be solved through <i>[S1]</i> and <i>[S2]</i>.</div></div>
+<div class="step"><h4>Важно</h4><p>Пишите только о том, что спросили. Если спрашивают causes — в Body 1 «The main causes of [issue] are [C1] and [C2]», о последствиях ни слова. Каждое решение должно отвечать на свою проблему.</p></div>
+</div>
+</details>
+<details class="guide">
+<summary><span><span class="tag ia">IELTS Advantage</span> <h3 style="display:inline">6. Two-part question</h3></span></summary>
+<div class="in">
+<p class="src">Структура — <a href="https://www.ieltsadvantage.com/2015/03/03/ielts-writing-task-2-essay-structures/">Essay Structures</a>. Шаблон для заполнения собран мной из опорных фраз их образцов.</p>
+<div class="step"><h4>Как узнать</h4><p>Утверждение и два отдельных вопроса: Why is this? What can be done? · What factors…? How realistic…?</p></div>
+<div class="step"><h4>Структура по предложениям</h4><div class="pair"><b>Introduction</b><span>перефраз → outline с ответами на оба вопроса</span><b>Body 1</b><span>прямой ответ на первый вопрос → почему → подробнее → пример</span><b>Body 2</b><span>прямой ответ на второй вопрос → почему → подробнее → пример</span><b>Conclusion</b><span>итог</span></div></div>
+<div class="step"><h4>Introduction</h4><div class="tpl"><i>[Paraphrase of the statement]</i>. This essay will first suggest <i>[answer to question 1]</i>, and it will then state that <i>[answer to question 2]</i>.</div></div>
+<div class="step"><h4>Body 1</h4><div class="tpl"><i>[Direct answer to question 1]</i>. <i>[Explain why]</i>. <i>[Explain further]</i>. For example, <i>[example]</i>.</div></div>
+<div class="step"><h4>Body 2</h4><div class="tpl">With regard to the question of <i>[question 2]</i>, <i>[direct answer]</i>. <i>[Explain why]</i>. <i>[Explain further]</i>. For example, <i>[example]</i>.</div></div>
+<div class="step"><h4>Conclusion</h4><div class="tpl">In conclusion, <i>[answer 1 in other words]</i>; however, <i>[answer 2 in other words]</i>.</div></div>
+<div class="step"><h4>Важно</h4><p>Один вопрос — один абзац. Самая частая ошибка — ответить только на первый.</p></div>
+</div>
+</details>
 
   <div class="card">
     <div class="head"><h3>Тема из прогнозов</h3><span class="tag vb">VBoostLab · predictions</span></div>
@@ -537,9 +673,22 @@ button:disabled{opacity:.5;cursor:not-allowed}
 <section class="view" id="v-sources" hidden>
   <div class="stack">
     <h2>Что просмотрено</h2>
-    <p class="lead">Я прошёл всю публичную ленту обоих каналов на 15 ноября 2026: каждый пост и каждую картинку. Ниже — что вошло в программу и что открыть не удалось.</p>
+    <p class="lead">Я прошёл всю публичную ленту обоих каналов на 15 ноября 2026: каждый пост и каждую картинку, и прочитал уроки IELTS Advantage по типам заданий. Ниже — что вошло в программу и что открыть не удалось.</p>
   </div>
   <div class="note"><b>Не удалось открыть:</b> PDF, аудио и HTML-файлы VBoostLab (прогнозы Speaking и Writing, списки слов, пробные Reading и Listening) и несколько видео Эрдли. Веб-версия Telegram отдаёт только название файла. Откройте их в приложении по ссылкам ниже. Если пришлёте мне сами PDF, я встрою темы из прогнозов прямо в тренажёр.</div>
+  <div class="card"><div class="head"><h3>IELTS Advantage</h3><span class="src">ieltsadvantage.com</span></div>
+    <p>Отсюда взяты структуры для типов, которых нет в каналах: графики и пять типов эссе. Вопросы-примеры в тренажёре тоже оттуда; полные образцы ответов остаются на сайте по ссылкам.</p>
+    <div class="pair">
+      <b><a href="https://www.ieltsadvantage.com/2015/03/03/ielts-writing-task-2-essay-structures/">Task 2 Essay Structures</a></b><span>пять типов эссе, структура по предложениям, образцы</span>
+      <b><a href="https://www.ieltsadvantage.com/2015/05/24/ielts-advantages-and-disadvantages-lesson/">Advantages and Disadvantages</a></b><span>два подтипа, включая outweigh</span>
+      <b><a href="https://www.ieltsadvantage.com/2015/03/18/writing-task-2-discussion-essay-lesson/">Discussion Essay</a></b><span>структура и образец</span>
+      <b><a href="https://www.ieltsadvantage.com/2015/05/08/ielts-problem-and-solution/">Problem and Solution</a></b><span>структура, outline sentence</span>
+      <b><a href="https://www.ieltsadvantage.com/2015/04/01/ielts-thesis-statement/">Thesis Statement</a></b><span>thesis для каждого типа</span>
+      <b><a href="https://www.ieltsadvantage.com/2015/03/09/ielts-writing-task-1-charts-lesson/">Task 1 Charts Lesson</a></b><span>четыре абзаца для графиков</span>
+      <b><a href="https://www.ieltsadvantage.com/2015/07/11/ielts-academic-writing-task-1/">Task 1 in 5 Easy Steps</a></b><span>перефраз и overview</span>
+      <b><a href="https://www.ieltsadvantage.com/2015/05/12/ielts-task-1-multiple-graphs/">Multiple Graphs</a></b><span>два графика в одном задании</span>
+      <b><a href="https://www.ieltsadvantage.com/2015/03/10/ielts-writing-task-1-grammar-guide/">Task 1 Grammar Guide</a></b><span>тренды, сравнения, доли, времена</span>
+    </div></div>
   <div class="card"><div class="head"><h3>Violetta Erdley | IELTS</h3><span class="src">посты 1–49</span></div><div class="scroll"><table id="srcE"></table></div></div>
   <div class="card"><div class="head"><h3>VBoostLab</h3><span class="src">посты 1–143</span></div><div class="scroll"><table id="srcV"></table></div></div>
 </section>
@@ -549,7 +698,7 @@ button:disabled{opacity:.5;cursor:not-allowed}
 <script>
 (function(){
 "use strict";
-var E="https://t.me/erdleyielts/", V="https://t.me/vboostlab/";
+var E="https://t.me/erdleyielts/", V="https://t.me/vboostlab/", IA="https://www.ieltsadvantage.com/";
 function $(id){return document.getElementById(id)}
 function el(tag,attrs,html){var e=document.createElement(tag);if(attrs)for(var k in attrs)e.setAttribute(k,attrs[k]);if(html!=null)e.innerHTML=html;return e}
 var store={get:function(k,d){try{var v=localStorage.getItem("ielts3:"+k);return v==null?d:JSON.parse(v)}catch(e){return d}},set:function(k,v){try{localStorage.setItem("ielts3:"+k,JSON.stringify(v))}catch(e){}}};
@@ -582,23 +731,28 @@ var PLAN=[
   ["Разбор карт: 3 времени, 4 категории изменений, respectively","Writing Task 1 → Grange Park",30,"#task1"],
   ["Написать Grange Park за 20 минут, сравнить с образцом на 155 слов","Тренажёр → Grange Park",35,"#trainer"],
   ["Speaking Part 1: выучить образец и формулу, ответить вслух на 12 вопросов","Speaking → тренировка, Part 1. Диктуйте ответы и отправляйте Claude на оценку",45,"#speaking"],
-  ["Карточки: «Speaking Erdley» и «Карты»","Слова",15,"#words"],
+  ["Графики: выучить шаблон (с датами и без), язык трендов и долей","Writing Task 1 → «Графики» и «Два графика сразу»",30,"#task1"],
+  ["Написать один график за 20 минут и проверить у Claude","Тренажёр → Line graph или Pie charts (график по ссылке)",30,"#trainer"],
+  ["Карточки: «Speaking Erdley», «Карты», «Графики»","Слова",15,"#words"],
   ["Один тест Listening из Cambridge IELTS на время","Виолетта сама решает Cambridge 21 (пост 19). Имена и номера — сначала в черновик",40,E+"19"],
   ["Если экзамен на компьютере: 10 минут слепой печати","stamina-online.com — совет VBoostLab",10,V+"10"]
  ]},
  {id:"d2",date:"2026-11-16",label:"Понедельник, 16 ноября",title:"День 2. Task 2 и Speaking Part 2–3",items:[
   ["Эссе Band 8.0: прочитать дважды, выписать 9 выделенных фраз и схему абзацев","Writing Task 2",30,"#task2"],
   ["Написать это же эссе по памяти за 40 минут, сравнить с образцом","Тренажёр → Exams vs continuous assessment",50,"#trainer"],
+  ["Шесть типов Task 2: научиться узнавать тип по вопросу, написать по памяти введение каждого шаблона","Writing Task 2 → «Все типы Task 2»",40,"#task2"],
   ["Новое эссе по той же схеме: тема из прогнозов про вредную еду","Тренажёр → Unhealthy food. 40 минут, 250+ слов, затем проверка у Claude",50,"#trainer"],
   ["Разбор «эволюция лошади» + приём причина-следствие из Venus flytrap","Writing Task 1",30,"#task1"],
   ["Написать одно из двух за 20 минут","Тренажёр → Horse или Venus flytrap",30,"#trainer"],
+  ["Эссе типа, который даётся хуже всего: discussion или problem–solution","Тренажёр → Task 2 по типам. Можно только план и введение, если нет сил",40,"#trainer"],
   ["Speaking Part 2: три карточки — минута подготовки, две минуты речи","Speaking → тренировка, Part 2",30,"#speaking"],
   ["Speaking Part 3: 8 вопросов, по 40–60 секунд","Плюс фразы VBoostLab: выбрать 3 своих",30,"#speaking"],
   ["Открыть в Telegram прогнозы Speaking и пройти темы вслух","PDF VBoostLab, пост 91 (осень 2026)",30,V+"91"]
  ]},
  {id:"d3",date:"2026-11-17",label:"Вторник, 17 ноября",title:"День 3. Пробный экзамен и повторение",items:[
   ["Полный Writing за 60 минут без пауз: Task 1 (20) + Task 2 (40)","Task 1 из прогнозов (sand dunes / theatre / meteorology), Task 2 — из PDF Nov–Dec, пост 141",65,"#trainer"],
-  ["Проверить оба текста по чек-листам, выписать 3 свои типичные ошибки","Writing Task 1 → чек-лист; Task 2 → схема абзацев",25,"#task1"],
+  ["Проверить оба текста у Claude и по чек-листам, выписать 3 свои типичные ошибки","Writing Task 1 → чек-лист; Task 2 → шаблон своего типа",25,"#task1"],
+  ["По памяти записать введения всех шести шаблонов Task 2 и шаблон графиков","Сверить с разделами Writing",20,"#task2"],
   ["Полный Speaking: Part 1 (4 мин) + Part 2 (3 мин) + Part 3 (5 мин), запись на диктофон","Прослушать: есть ли прямой ответ, причина и пример",30,"#speaking"],
   ["Listening: spelling имён, адресов и номеров","Плейлисты из поста VBoostLab 98 — 20 минут",20,V+"98"],
   ["Пролистать «250+ misspelled words» и синонимы для Reading","PDF VBoostLab, посты 61 и 21",20,V+"61"],
@@ -681,6 +835,8 @@ var DECKS=[
  {id:"maps",name:"Карты · Erdley",src:"пост 49",cards:[["has been replaced by","был заменён"],["has given way to","уступил место"],["has been removed","был убран"],["has been constructed","был построен"],["has been added","был добавлен"],["has been retained","был сохранён"],["has remained unchanged","остался без изменений"],["surrounded by","окружён"],["in the north-western corner","в северо-западном углу"],["remain in their original positions","остаются на прежних местах"],["respectively","соответственно (порядок объектов должен совпадать)"],["has been extensively modernised","был значительно модернизирован"]]},
  {id:"proc",name:"Процессы · Erdley",src:"посты 34, 36",cards:[["The diagram outlines the stages involved in…","Диаграмма показывает стадии… (introduction)"],["comprising eight main stages","состоящий из восьми основных стадий"],["is transformed into","превращается в"],["Initially, …","Сначала…"],["subsequently","затем, впоследствии"],["The resulting dough…","Получившееся тесто…"],["before being cooked","перед тем как его готовят"],["Once this stage has been completed, …","Когда эта стадия завершена…"],["became progressively larger","становился всё крупнее"],["with particular emphasis on","с особым вниманием к"],["was gradually reduced to","постепенно сократился до"],["more closely resembled","стал больше походить на"],["causing its two sides to snap shut","из-за чего две створки захлопываются (причина → следствие, VBoostLab)"]]},
  {id:"essay",name:"Эссе · Erdley",src:"пост 17",cards:[["provide a fair picture of","давать объективную картину"],["on one particular day","в один конкретный день"],["As a result, the grade is less likely to be affected by…","В результате оценка с меньшей вероятностью пострадает от…"],["measure skills that traditional examinations often ignore","оценивать навыки, которые обычные экзамены часто игнорируют"],["study consistently throughout the course","заниматься стабильно в течение всего курса"],["Some people may argue that…","Кто-то может возразить, что…"],["However, this problem can be reduced by…","Однако эту проблему можно уменьшить, если…"],["a broader range of useful skills","более широкий набор полезных навыков"],["I completely agree because…","Я полностью согласен, потому что…"],["…, in contrast, …","напротив"]]},
+ {id:"charts",name:"Графики · IELTS Advantage",src:"Task 1 Grammar Guide",cards:[["There was a gradual rise in…","Наблюдался постепенный рост… (There + be + adj + noun + in)"],["The price of oil rose gradually.","Цена на нефть постепенно выросла (noun + verb + adverb)"],["sharp / dramatic / steep","резкий"],["slight / modest","небольшой"],["steady / gradual","стабильный / постепенный"],["fluctuation · to fluctuate","колебание · колебаться"],["plummet / plunge","резко упасть"],["remain relatively stable","оставаться примерно на одном уровне"],["peak","пик, максимум"],["halved · doubled","сократился вдвое · удвоился"],["just over a half","51%"],["nearly a third","32%"],["roughly one quarter","26%"],["nearly three quarters","73%"],["a significant majority","значительное большинство (≈71%)"],["a small minority","небольшое меньшинство (≈15%)"],["a tiny fraction","крошечная доля (≈3%)"],["accounted for / made up","составлял (о доле)"],["respectively","соответственно"],["Overall, it is clear that…","В целом видно, что… (начало overview)"],["The most noticeable trend is that…","Самая заметная тенденция — …"],["is projected to / is predicted to","по прогнозу (для будущих дат)"]]},
+ {id:"t2",name:"Каркасы Task 2",src:"IELTS Advantage · Essay Structures",cards:[["Opinion — introduction","It is argued that [paraphrase]. This essay agrees / disagrees with this because [reason 1] and [reason 2]."],["Discussion — introduction","Some argue that [view A], while others believe that [view B]. This essay agrees that [your side]."],["Advantages / disadvantages — introduction","It is argued that [paraphrase]. [A1] and [A2] are the main advantages, whereas [D1] and [D2] are the main disadvantages."],["Outweigh — introduction","[Paraphrase]. This essay will argue that the advantages of this outweigh the drawbacks."],["Problem–solution — introduction","[Paraphrase]. This essay will first suggest that the biggest problems are [P1] and [P2] and then argue that [S1] and [S2] are the most viable solutions."],["Two-part — introduction","[Paraphrase]. This essay will first suggest [answer 1], and it will then state that [answer 2]."],["Body paragraph — любой тип","Topic sentence → explanation → example (For example, … / For instance, … / A prime example of this is …)"],["Conclusion — opinion","In conclusion, [position] because [reason 1], and [reason 2]."],["Conclusion — advantages / disadvantages","In conclusion, the benefits of [topic], such as …, must be weighed against the drawbacks, such as …"],["Conclusion — problem–solution","In conclusion, the main problems with [topic] are …. These can be solved through …"],["Furthermore, … / As well as this, …","Кроме того (вторая идея в абзаце)"],["That is to say that…","То есть… (объяснение topic sentence)"],["Despite this, …","Несмотря на это (переход к своему мнению)"],["With regard to the question of…","Что касается вопроса о… (начало Body 2 в two-part)"]]},
  {id:"vbsp",name:"Фразы · VBoostLab",src:"пост 132",cards:[["I’m not buying it","не верю, меня не убедишь"],["nothing short of","не что иное, как"],["I can’t wrap my head around…","не укладывается в голове"],["that’s beside the point","дело не в этом"],["to do the trick","сработать, помочь"],["in regard to","что касается"],["to be on the fence","колебаться, не определиться"]]},
  {id:"up",name:"Замены · VBoostLab",src:"посты 109, 128, 21, 121",cards:[["start →","commence"],["destroy →","eradicate"],["only →","solely"],["expect →","anticipate"],["ask →","request"],["change →","alter"],["clean up →","purify"],["interesting →","intriguing"],["hardworking →","diligent"],["pretty →","ethereal"],["charming →","captivating"],["but →","nevertheless"],["short-lived →","ephemeral"],["difficult →","challenging"],["important →","essential"],["result →","outcome"],["appearance","внешний вид человека или предмета: change your appearance"],["looks","внешняя привлекательность: good looks"],["outlook","взгляды, отношение к жизни: a positive outlook"],["communication / communications","процесс общения / средства и системы связи"]]},
  {id:"wl",name:"Wordlists · VBoostLab",src:"посты 62–125, #article",cards:[["sustainable","causing little or no damage to the environment and able to continue for a long time"],["disrupt","to prevent a system, process or event from continuing as usual"],["contribute to sth","to help to cause an event or situation"],["streamline","to make more efficient by removing unnecessary steps"],["tackle","to make a determined effort to deal with a difficult problem"],["address","to give attention to or deal with a matter or problem"],["compelling","very convincing and able to hold your attention"],["subsequent","happening after something else"],["downside","a disadvantage of a situation"],["burden","a difficult situation or unpleasant responsibility"],["exceed","to be greater than a number or amount; to go past a limit"],["prolonged","continuing for a long time"],["reluctant","not willing to do something and therefore slow to do it"],["hamper / impede","to make an action or progress more difficult"],["vulnerable","open to being harmed, influenced or changed"],["induce","to cause a particular condition, response or effect"],["trigger","to cause something bad to start"],["threshold","the level at which something starts to happen"],["set out to do sth","to start an activity with a particular aim"],["aspire to sth","to have a strong wish or hope to do or have something"],["justification","a good reason or explanation for something"],["long-standing","having existed for a long time"],["landmark","an important event or discovery marking a major stage"],["hypothesis","a proposed explanation that can be tested by research"],["exposure","being affected by something because of being in a situation or place"],["transparency","the quality of being done in an open way without secrets"],["disclose","to make something known publicly"],["sceptical","doubting that something is true or useful"],["sacrifice","giving up something valuable in order to help someone else"],["take the plunge","to decide to do something after thinking about it for a long time"]]}
@@ -712,9 +868,19 @@ var TASKS=[
  {id:"dunes",t:1,name:"Task 1 · Sand dunes (прогноз)",prompt:"The diagram below shows the way in which sand dunes are formed. Summarize the information by selecting and reporting the main features, and make comparisons where relevant.",src:'VBoostLab, <a href="'+V+'33">пост 33</a> — схема в посте. Образца в канале нет: проверяйте себя по чек-листу Task 1'},
  {id:"meteo",t:1,name:"Task 1 · Bureau of Meteorology (прогноз)",prompt:"The diagram below shows how the Australian Bureau of Meteorology collects up-to-the-minute information on the weather in order to produce reliable forecasts. Write a report for a university lecturer describing the information shown below.",src:'VBoostLab, <a href="'+V+'33">пост 33</a> — схема в посте. Образца в канале нет'},
  {id:"theatre",t:1,name:"Task 1 · Theatre 2010 / 2012 (прогноз)",prompt:"The plans below show a small theater in 2010, and the same theater in 2012. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",src:'VBoostLab, <a href="'+V+'33">пост 33</a> — планы в посте. Образца в канале нет'},
+ {id:"line",t:1,name:"Task 1 · Line graph: US energy",prompt:"The graph below gives information from a 2008 report about energy consumption in the USA since 1980, with projections until 2030. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",src:'IELTS Advantage — <a href="'+IA+'2015/04/07/writing-task-1-line-graph-sample-answer-us-consumption-of-energy/">график и образец на сайте</a>. Впишите цифры с графика: Claude его не видит'},
+ {id:"pie",t:1,name:"Task 1 · Pie charts: Yemen and Italy",prompt:"The charts below give information on the ages of the populations of Yemen and Italy in 2000 and projections for 2050. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",src:'IELTS Advantage — <a href="'+IA+'2015/04/09/writing-task-1-pie-chart-answer-italy-and-yemen-populations/">диаграммы и образец на сайте</a>'},
+ {id:"bar",t:1,name:"Task 1 · Bar chart",prompt:"Откройте задание по ссылке, перепишите формулировку в первую строку и опишите диаграмму.",src:'IELTS Advantage — <a href="'+IA+'2015/05/27/bar-chart-question-sample-essay-answer/">диаграмма и образец на сайте</a>'},
+ {id:"multi",t:1,name:"Task 1 · Two charts: pie chart + table",prompt:"The pie chart below shows the main reasons why agricultural land becomes less productive. The table shows how these causes affected three regions of the world during the 1990s. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",src:'IELTS Advantage — <a href="'+IA+'2015/05/12/ielts-task-1-multiple-graphs/">графики и разбор на сайте</a>'},
  {id:"exams",t:2,name:"Task 2 · Exams vs continuous assessment",prompt:"Some people believe that exams are an inappropriate way of measuring students’ performance and should be replaced by continuous assessment. To what extent do you agree or disagree?",src:'Erdley, <a href="'+E+'17">пост 17</a>',
   model:["Many schools and universities use final examinations to measure students’ academic performance. Some people believe that this method is ineffective and should be replaced with continuous assessment. I completely agree because regular assessment shows students’ abilities over time and allows a wider range of skills to be evaluated.","The first reason is that a single exam cannot always provide a fair picture of a student’s knowledge. It only shows how well someone performs on one particular day. Even a capable student may receive a low mark because they are nervous, unwell or unable to understand one question correctly. Continuous assessment, in contrast, is based on several assignments completed throughout the course. For example, teachers can consider students’ homework, written tasks and class performance when calculating their final grade. As a result, the grade is less likely to be affected by one unsuccessful exam.","Another reason is that continuous assessment can measure skills that traditional examinations often ignore. Projects, presentations and reports require students to research information, solve problems and communicate their ideas clearly. These abilities are important both at university and in future employment. Regular assessment also encourages students to study consistently throughout the course. By contrast, examinations may lead learners to memorise large amounts of information shortly before the test and forget it soon afterwards. Some people may argue that continuous assessment is less objective because different teachers can give different marks. However, this problem can be reduced by using clear marking criteria and having important assignments checked by more than one teacher.","In conclusion, I fully agree that examinations should be replaced with continuous assessment because it provides a more reliable picture of students’ knowledge and evaluates a broader range of useful skills."]},
  {id:"food",t:2,name:"Task 2 · Unhealthy food in shops (прогноз)",prompt:"Some people think that shops should not be allowed to sell food or drinks that have been scientifically proven to be bad for people’s health. Do you agree or disagree?",src:'VBoostLab, <a href="'+V+'33">пост 33</a>. Образца в канале нет: пишите по схеме абзацев из раздела Task 2'},
+ {id:"t2op",t:2,name:"Task 2 · Opinion: community service",prompt:"Some people believe that unpaid community service should be compulsory in high school programmes (for example, working for a charity, improving the neighbourhood or teaching sports to younger children). Do you agree or disagree?",src:'Тип 1. Образец — <a href="'+IA+'2015/03/03/ielts-writing-task-2-essay-structures/">IELTS Advantage</a>'},
+ {id:"t2disc",t:2,name:"Task 2 · Discussion: technology in education",prompt:"Technology is being used more and more in education. Some people say that this is a positive trend, while others argue that it is leading to negative consequences. Discuss both sides of this argument and then give your own opinion.",src:'Тип 2. Образец — <a href="'+IA+'2015/03/18/writing-task-2-discussion-essay-lesson/">IELTS Advantage</a>'},
+ {id:"t2adv",t:2,name:"Task 2 · Advantages / disadvantages: gap year",prompt:"In some countries, young people are encouraged to work or travel for a year between finishing high school and starting university studies. Discuss the advantages and disadvantages for young people who decide to do this.",src:'Тип 3. Образец — <a href="'+IA+'2015/05/24/ielts-advantages-and-disadvantages-lesson/">IELTS Advantage</a>'},
+ {id:"t2out",t:2,name:"Task 2 · Outweigh: foreign language at primary school",prompt:"Some experts believe that it is better for children to begin learning a foreign language at primary schools rather than secondary schools. Do the advantages of this outweigh the disadvantages?",src:'Тип 4. Образец — <a href="'+IA+'2015/05/24/ielts-advantages-and-disadvantages-lesson/">IELTS Advantage</a>'},
+ {id:"t2ps",t:2,name:"Task 2 · Problem–solution: reliance on technology",prompt:"Students are becoming more and more reliant on technology. What are some of the problems associated with reliance on computers, and what are some of the possible solutions?",src:'Тип 5. Образец — <a href="'+IA+'2015/05/08/ielts-problem-and-solution/">IELTS Advantage</a>'},
+ {id:"t2two",t:2,name:"Task 2 · Two-part: job satisfaction",prompt:"As most people spend a major part of their adult life at work, job satisfaction is an important element of individual wellbeing. What factors contribute to job satisfaction? How realistic is the expectation of job satisfaction for all workers?",src:'Тип 6. Образец — <a href="'+IA+'2015/03/03/ielts-writing-task-2-essay-structures/">IELTS Advantage</a>'},
  {id:"free",t:2,name:"Task 2 · Своя тема (из PDF-прогнозов)",prompt:"Вставьте в первую строку ответа тему из PDF с прогнозами и пишите эссе на 250+ слов.",src:'Темы: VBoostLab, посты <a href="'+V+'141">141</a> и <a href="'+V+'123">123</a>'}
 ];
 var cur=TASKS[0], drafts=store.get("drafts",{});
@@ -739,7 +905,7 @@ $("tmodel").addEventListener("click",function(){
 });
 
 /* ---------- Claude on the page ---------- */
-var METHOD="The candidate studies with this method. Writing Task 1: Introduction (paraphrase of the task only) -> Overview (starts with Overall, the big picture, no dates or small details) -> Body 1 -> Body 2; bodies are split by logic (stage of the transformation, or area of the map), never mechanically; Passive Voice for man-made processes; for maps: Past Simple for the old map, Present Perfect Passive for changes, Present Simple for today, never 'Body 1 = old map, Body 2 = new map', use 'respectively' with matching order; show cause and effect between stages. Writing Task 2 opinion essay: introduction = general fact + the view from the task in other words + a clear position with two reasons; Body 1 = first reason, explanation, example, result; Body 2 = second reason, a counter-argument and its rebuttal; one-sentence conclusion restating the position; clear simple vocabulary is preferred to rare words. Speaking Part 1: direct answer + reason + what it gives me, about three sentences; one natural idiom in the right context is better than five memorised ones.";
+var METHOD="The candidate studies with this method. Writing Task 1: Introduction (paraphrase of the task only) -> Overview (starts with Overall, the big picture, no dates or small details) -> Body 1 -> Body 2; bodies are split by logic (stage of the transformation, or area of the map), never mechanically; Passive Voice for man-made processes; for maps: Past Simple for the old map, Present Perfect Passive for changes, Present Simple for today, never 'Body 1 = old map, Body 2 = new map', use 'respectively' with matching order; show cause and effect between stages. Writing Task 2 opinion essay: introduction = general fact + the view from the task in other words + a clear position with two reasons; Body 1 = first reason, explanation, example, result; Body 2 = second reason, a counter-argument and its rebuttal; one-sentence conclusion restating the position; clear simple vocabulary is preferred to rare words. Charts (line, bar, pie, table): one-sentence paraphrase introduction, overview of two or three main features with no numbers, then two detail paragraphs with data, no conclusion; dynamic charts describe trends, static charts compare categories; two different charts get one body paragraph each. Other Task 2 types follow the IELTS Advantage four-paragraph structures: discussion (both views stated in the introduction with a thesis, one view per body paragraph, conclusion says which is stronger), advantages/disadvantages (two of each, no opinion), outweigh (thesis, stronger side in a long paragraph, weaker side in a short one), problem/cause and solution (problems in Body 1, matching solutions in Body 2), two-part question (one question per body paragraph). Check that the essay matches its question type. Speaking Part 1: direct answer + reason + what it gives me, about three sentences; one natural idiom in the right context is better than five memorised ones.";
 var hasClaude=!!(window.claude&&window.claude.use);
 var sampleP=hasClaude?window.claude.use("sample"):Promise.resolve(null);
 var COPY={not_granted:"Вы не разрешили странице обращаться к Claude. Разрешение можно вернуть в меню Permissions этого артефакта.",rate_limited:"Слишком много запросов подряд. Подождите минуту и нажмите ещё раз.",prompt_too_large:"Текст слишком длинный для одной проверки. Сократите его.",session_expired:"Сессия истекла. Обновите страницу и повторите."};
